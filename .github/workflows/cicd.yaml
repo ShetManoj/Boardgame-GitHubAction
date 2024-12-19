@@ -30,3 +30,26 @@ jobs:
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+    - name: Install jq 
+      run: sudo apt update && sudo apt install jq -y 
+
+
+    - name: SonarQube Quality Gate check
+      id: sonarqube-quality-gate-check
+      uses: sonarsource/sonarqube-quality-gate-action@master
+      timeout-minutes: 5
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+    - name: Docker Setup QEMU
+      uses: docker/setup-qemu-action@v3.2.0
+
+      
+     
+        
+
+    
+
+      
